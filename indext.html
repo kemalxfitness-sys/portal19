@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kariyer Portalı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00bfff;
+        }
+
+        .content {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .cv-container img,
+        .profile-img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            margin: 10px auto;
+            display: block;
+        }
+
+        h1,
+        h2 {
+            color: #003087;
+            text-align: center;
+        }
+
+        .section {
+            margin: 15px 0;
+            text-align: left;
+            padding: 0 20px;
+        }
+
+        .job-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+
+        .job-card h3 {
+            color: #003087;
+            margin-top: 0;
+        }
+
+        .job-card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .job-card ul li:before {
+            content: "•";
+            color: #003087;
+            margin-right: 10px;
+        }
+
+        .apply-btn {
+            background-color: #00aaff;
+            color: rgb(18, 3, 3);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .apply-btn:hover {
+            background-color: #090107;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin: 10px;
+                padding: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('nav a');
+            const pages = document.querySelectorAll('.content');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('href').substring(1);
+
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === pageId) {
+                            page.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // İlk sayfa (Ana Sayfa) varsayılan olarak aktif
+            document.getElementById('ana-sayfa').classList.add('active');
+        });
+    </script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#ana-sayfa" data-page>Ana Sayfa</a></li>
+            <li><a href="#cv" data-page>CV</a></li>
+            <li><a href="#is-ilanlari" data-page>İş İlanları</a></li>
+            <li><a href="#iletisim" data-page>İletişim</a></li>
+        </ul>
+    </nav>
+
+    <div id="ana-sayfa" class="content">
+        <h1>Hoş geldiniz</h1>
+        <p>Bu portal, kariyer bilgilerinizi ve iş ilanlarınızı görüntülemek için tasarlanmıştır. Lütfen menüden
+            istediğiniz bölümü seçin.</p>
+    </div>
+
+    <div id="cv" class="content">
+        <h1>CV</h1>
+        <div class="cv-container">
+            <h2>Dilara Ün</h2>
+
+            <div class="section">
+                <h3>Kişisel Bilgiler</h3>
+                <p><strong>İsim:</strong> Dilara Ün</p>
+                <p><strong>Ünvan:</strong> Endüstri Mühendisi</p>
+                <p><strong>Telefon:</strong> +90 (532) 123 45 67</p>
+                <p><strong>E-posta:</strong> dilara.un@gmail.com</p>
+                <p><strong>Adres:</strong> İstanbul, Üsküdar</p>
+            </div>
+            <div class="section">
+                <h3>Özgeçmiş Özeti</h3>
+                <p>Makine mühendisliği alanında 12 yıllık deneyime sahip. Tasarım, üretim süreçleri ve proje yönetimi
+                    konularında uzman.</p>
+            </div>
+            <div class="section">
+                <h3>İş Deneyimleri</h3>
+                <ul>
+                    <li>Ürün geliştirme ve pazar araştırması.</li>
+                    <li>Proje takibi ve raporlama.</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Eğitim Bilgileri</h3>
+                <p>İstanbul Üniversitesi, Endüstri Mühendisliği (2018-2023)</p>
+            </div>
+            <div class="section">
+                <h3>İlgilendiği Alanlar</h3>
+                <p>Üretim optimizasyonu, veri analizi, proje yönetimi.</p>
+            </div>
+        </div>
+
+        <div class="cv-container">
+            <h2>Sena Kara</h2>
+
+            <div class="section">
+                <h3>Kişisel Bilgiler</h3>
+                <p><strong>İsim:</strong> Sena Kara</p>
+                <p><strong>Ünvan:</strong> Kıdemli Proje Mühendisi</p>
+                <p><strong>Telefon:</strong> +90 (532) 123 45 67</p>
+                <p><strong>E-posta:</strong> sena.kara@gmail.com</p>
+                <p><strong>Adres:</strong> Bursa, Osmangazi</p>
+            </div>
+            <div class="section">
+                <h3>Özgeçmiş Özeti</h3>
+                <p>Makine mühendisliği alanında 15 yıllık deneyim. Tasarım ve prototip geliştirme konularında uzman.</p>
+            </div>
+            <div class="section">
+                <h3>İş Deneyimleri</h3>
+                <ul>
+                    <li>Ürün tasarımı ve proje mühendisliği.</li>
+                    <li>Stajyer makine mühendisi rolleri.</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Eğitim Bilgileri</h3>
+                <p>Uludağ Üniversitesi, Makine Mühendisliği (Eylül 2008-Haziran 2011)</p>
+            </div>
+            <div class="section">
+                <h3>İlgilendiği Alanlar</h3>
+                <p>Üretim süreçleri, proje bazlı uygulamalar.</p>
+            </div>
+        </div>
+
+        <div class="cv-container">
+            <h2>Erhan Kılıç</h2>
+
+            <div class="section">
+                <h3>Kişisel Bilgiler</h3>
+                <p><strong>İsim:</strong> Erhan Kılıç</p>
+                <p><strong>Ünvan:</strong> Endüstri Mühendisi</p>
+                <p><strong>Telefon:</strong> +90 (532) 123 45 67</p>
+                <p><strong>E-posta:</strong> erhan.kilic@example.com</p>
+                <p><strong>Adres:</strong> Ankara, Çankaya</p>
+            </div>
+            <div class="section">
+                <h3>Özgeçmiş Özeti</h3>
+                <p>Endüstri mühendisliği alanında 5 yıllık deneyim. Üretim planlama ve veri analizi konularında yetkin.
+                </p>
+            </div>
+            <div class="section">
+                <h3>İş Deneyimleri</h3>
+                <ul>
+                    <li>Üretim planlama ve süreç optimizasyonu.</li>
+                    <li>Raporlama ve proje destek rolleri.</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>Eğitim Bilgileri</h3>
+                <p>Ankara Üniversitesi, Endüstri Mühendisliği (2015-2019)</p>
+            </div>
+            <div class="section">
+                <h3>İlgilendiği Alanlar</h3>
+                <p>Verimlilik artışı, lojistik planlama, veri analizi.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="is-ilanlari" class="content">
+        <h1>İş İlanları</h1>
+        <div class="job-card">
+            <h3>Kıdemli Proje Yöneticisi Mühendisi - İstanbul</h3>
+            <p><strong>Şirket:</strong> İnovasyon Teknoloji A.Ş.</p>
+            <p><strong>Konum:</strong> İstanbul Avrupa Yakası</p>
+            <p><strong>Açıklama:</strong> Büyüyen ekibimize, endüstri mühendisliği altyapısına sahip kıdemli proje
+                yöneticisi arıyoruz. Büyük ölçekli projelerde liderlik yapabilecek, analitik düşünme yeteneğine sahip
+                adaylar aranmaktadır.</p>
+            <ul>
+                <li><strong>Gereklilikler:</strong> Endüstri Mühendisliği veya ilgili bir bölümden mezun, minimum 5 yıl
+                    proje yönetimi deneyimi, PMP sertifikası veya eşdeğeri, ileri düzey MS Project ve ERP bilgisi, ileri
+                    İngilizce (yazılı ve sözlü).</li>
+                <li><strong>Görevler:</strong> Proje planlama, bütçe yönetimi ve takvim kontrolü, ekip koordinasyonu ve
+                    taşeron yönetimi, proje teslim süreçlerinin denetimi.</li>
+            </ul>
+            <a href="mailto:kemal.feyzaduran@gmail.com" class="apply-btn">Başvur</a>
+        </div>
+        <div class="job-card">
+            <h3>Endüstri Mühendisi - Bursa</h3>
+            <p><strong>Şirket:</strong> Otomotiv Parça Sanayi</p>
+            <p><strong>Konum:</strong> Bursa</p>
+            <p><strong>Açıklama:</strong> Otomotiv sektöründe endüstri mühendisi pozisyonu için adaylar arıyoruz. Üretim
+                planlama ve optimizasyon deneyimi olanlar önceliklidir.</p>
+            <ul>
+                <li><strong>Gereklilikler:</strong> Endüstri Mühendisliği mezunu, en az 3 yıl üretim deneyimi, ERP
+                    sistemlerinde bilgi, analitik düşünme yeteneği.</li>
+                <li><strong>Görevler:</strong> Üretim planlama ve takibi, verimlilik artışı projeleri, raporlama ve
+                    sunum hazırlama.</li>
+            </ul>
+            <a href="mailto:kemal.feyzaduran@gmail.com" class="apply-btn">Başvur</a>
+        </div>
+        <div class="job-card">
+            <h3>İş Hukuku Avukatı - Antalya</h3>
+            <p><strong>Şirket:</strong> Turizm Hukuk Bürosu</p>
+            <p><strong>Konum:</strong> Antalya</p>
+            <p><strong>Açıklama:</strong> Turizm sektöründe faaliyet gösteren firmamıza iş hukuku avukatı arıyoruz.
+                Yerel mevzuata hakim adaylar tercih edilir.</p>
+            <ul>
+                <li><strong>Gereklilikler:</strong> Hukuk fakültesi mezunu, en az 2 yıl iş hukuku tecrübesi, analitik
+                    düşünme ve müzakere becerileri, Baro kaydı.</li>
+                <li><strong>Görevler:</strong> Çalışan hakları davaları, iş hukuku sözleşmeleri, danışmanlık hizmetleri.
+                </li>
+            </ul>
+            <a href="mailto:kemal.feyzaduran@gmail.com" class="apply-btn">Başvur</a>
+        </div>
+    </div>
+
+    <div id="iletisim" class="content">
+        <h1>İletişim</h1>
+        <p><strong>Telefon:</strong> +90 (546) 278 80 10</p>
+        <p><strong>E-posta:</strong> kemal.feyzaduran@gmail.com</p>
+        <p><strong>Adres:</strong> Ankara, Türkiye</p>
+    </div>
+</body>
+
+</html>
